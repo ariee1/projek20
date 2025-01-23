@@ -95,15 +95,14 @@ def kesimpulan(usia, berat_badan, total_gula, kebutuhan_gula, nama_pengguna):
         warna = "green"  # Warna hijau jika konsumsi gula sesuai kebutuhan
 
     kesimpulan_teks = (
-        f"Dengan kategori {usia_kategori} dan berat badan {berat_badan} kg, kebutuhan gula harian {nama_pengguna} adalah sekitar {kebutuhan_gula:.2f} gram.<br>"
-        f"Total gula sebesar {total_gula:.2f} gram dari buah-buahan yang dipilih.<br>"
-        f"{rekomendasi}"
+        f"Dengan kategori {usia_kategori} dan berat badan {berat_badan} kg, kebutuhan gula harian {nama_pengguna} adalah sekitar {kebutuhan_gula:.2f} gram.<br>" f"Total gula sebesar {total_gula:.2f} gram dari buah-buahan yang dipilih.<br>"
+        f"<span style='color: {warna};'>{rekomendasi}</span>"
     )
 
-    return kesimpulan_teks, warna
+    return kesimpulan_teks
 
 # Hitung dan tampilkan kesimpulan
 if buah_terpilih:
-    kesimpulan_teks, warna = kesimpulan(usia, berat_badan, total_gula, kebutuhan_gula, nama)
+    kesimpulan_teks = kesimpulan(usia, berat_badan, total_gula, kebutuhan_gula, nama)
     st.subheader("Kesimpulan")
-    st.markdown(f"<p style='color: {warna};'>{kesimpulan_teks}</p>", unsafe_allow_html=True)
+    st.markdown(kesimpulan_teks, unsafe_allow_html=True)
